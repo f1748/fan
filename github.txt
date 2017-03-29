@@ -1,0 +1,83 @@
+
+
+
+bower vue 管理工具
+npm install bower -g	安装 bower 
+bower -v 查看bower 版本
+
+下载：bower install 包名	卸载：bower uninstall 包名
+
+查看 要下载的包的版本	bower info 包名
+
+给项目添加版权信息 
+git config --global user.name "fa"
+git config --global user.email "1005911959@qq.com"
+
+创建本地仓库
+pwd	当前路径
+
+git add one.txt 把txt 添加到暂存区
+
+git commit -m "one.txt提交"	把txt提交到仓库
+
+git status	one.txt 是否提交成功 
+
+git diff one.txt 查看修改了哪些内容
+
+git log 	查看修改的历史记录
+
+
+cat one.txt 	查看 one.txt 的文件
+
+git reset --hard HEAD^ 版本恢复到上一级
+
+git reflog 查看所有版本
+
+git reset --hard 5fdd53 恢复到该版本
+
+git checkout -- one.txt 撤销命令 把未添加到暂存区的内容撤销掉
+
+rm two.txt 删除 已经加入到仓库的 two.txt
+
+git checkout -- two.txt	恢复two.txt 恢复到暂存区
+
+
+远程仓:
+创建 SSH Key
+ssh-keygen -t rsa -C "1005911959@qq.com"
+
+$ git remote add origin https://github.com/f1748/vue.git	本地仓库关联到远程仓	
+
+git push -u origin master 把本地仓库中的 master 内容 推送到远程仓
+
+git clone https://github.com/f1748/fan.git 把远程仓文件 克隆到本地
+
+git checkout -b dev 创建 本地 dev 分支并切换到该分支
+
+git checkout master 切换分支到 master
+
+git branch 查看本地所有分支
+
+git branch fan 创建 分支 fan
+
+git merge dev 把当前分支 和 dev 分支 合并
+
+git branch -d dev 删除 dev 分支
+
+git stash 把当前工作存档起来
+
+git stash list 查看当前所有的 工作场
+
+git stash apply 恢复
+
+git stash drop 删除工作场
+
+git remote 查询当前远程库的信息 
+
+git remote -v 查询远程库的详细信息
+
+git remote set-url origin https://github.com/f1748/fan.git	切换远程仓地址
+
+查看.git下面的config文件 查看本地仓
+
+范增：
