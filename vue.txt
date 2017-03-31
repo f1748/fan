@@ -1,0 +1,512 @@
+动画:
+.fade-transition{
+
+}
+
+进入
+.fade-enter{
+	
+}
+
+离开
+.fade-leave{
+	
+}
+
+new Vue({
+	
+	transitions:{
+	定义所有动画名称
+}
+})
+
+------------------------------------------
+<!doctype html>
+<html>
+<head>
+        <mate charset = "utf-8"/>
+        <title>fullpage</title>
+        <link rel="stylesheet" href="lib/bootstrap.min.css">
+        
+<script src="./bower_components/vue/dist/vue.js"></script>
+<link rel="stylesheet" href="./bower_components/animate.css" type="text/css" />
+<style>
+    #box{
+        width:400px;
+        margin: 0 auto;
+    }
+    #box1{
+        width:100px;
+        height:100px;
+        background:red;
+    }
+
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+<div id="box">
+    <input type="button" @click="bao()" value="按钮"/>
+   <div id="box1" class="animated" v-show="bSign" transition="bounce"></div>
+</div>
+   <script type="text/javascript">
+       new Vue({
+           el:"#box",
+           data:{
+                bSign:true
+           },
+           methods:{
+                bao:function(){
+                    this.bSign=!this.bSign;
+                }
+           },
+           transitions:{
+               bounce:{
+                   enterClass:"zoomInLeft",
+                   leaveClass:"zoomOutRight"
+               }
+           }
+
+       })
+   </script>
+</body>
+</html>
+----------------------------------------------------
+
+vue 组件概念：
+
+1.全局组件
+	组件：一个大的对象
+	定义一个组件 Vue.extend({})
+	注册一个组件 Vue.component("aa",Aaa)
+全局组件
+
+    var Aaa = Vue.extend({
+            template:"<h3>h3标签</h3>"
+    })
+
+   Vue.component("aa",Aaa);
+
+    var vm = new Vue({
+        el:"#box",
+        data:{
+            bSign:{
+                bSign:true
+            }
+        }
+    });
+
+全局组件2
+ Vue.component("aa",{
+        template:"<div>我是一个div</div>"
+    })
+
+
+组件里面放数据
+
+var Aaa = Vue.extend({
+            data:function(){ //data 必须是一个函数形式，函数必须返回一个对象(json)
+                return{
+                    msg:"我是h3" // 数据一定要return
+                }
+            },
+            template:"<h3>{{msg}}</h3>"
+    })
+
+
+组件 添加事件：
+ var Aaa = Vue.extend({
+            data:function(){
+                return{
+                    msg:"我是h3"
+                }
+            },
+            methods:{
+                change:function(){
+                    this.msg = "changed"
+                }
+            },
+            template:"<h3 @click='change()'>{{msg}}</h3>"
+    })
+
+   Vue.component("aa",Aaa);
+
+局部组件:
+	放到某个组件内部
+
+  <script type="text/javascript">
+   var Aaa = Vue.extend({
+            
+            template:"<h3>welcom</h3>"
+    })
+
+   Vue.component("aa",Aaa);
+ 
+    
+    var vm = new Vue({
+        el:"#box",
+        data:{
+            bSign:{
+                bSign:true
+            }
+        },
+        components:{
+            aa:Aaa
+        }
+    });
+
+
+组件的另外一种方式: 这种方法用的较多一些
+
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+<div id="box">
+    <my-aa></my-aa>
+</div>
+   <script type="text/javascript">
+    var vm = new Vue({
+        el:"#box",
+        components:{
+            "my-aa":{
+                template:"<h2>标题2</h2>"
+            }
+        }
+    });
+
+     
+   </script>
+</body>
+</html>
+
+
+------------------------------------------------------------
+
+动态组件:
+var vm = new Vue({
+        el:"#box",
+        data:{
+            a:'aaa'
+        },
+        components:{
+            "aaa":{
+                template:"<h3>我是h3</h3>"
+            },
+            "bbb":{
+                template:"<h2>我是h2</h2>"
+            }
+        }
+    });
+----------------------
+
+vue调试工具：
+vue-devtools
+
+--------------------
+父子组件：	局部组件 数据最好放在组件内部
+
+components:{注册组件
+	"aaa":{//组件名称	
+		data:function(){
+			msg:"组件数据"
+		}
+		template:"<h2></h2>"	创建模板
+		
+		components:{//注册子组件
+		创建子组件模板
+		}
+	
+	
+	},
+	"bbb":{
+		template:"<h1></h1>"
+	}
+	
+}
+
+实例:
+
+new Vue({
+        el:"#box",
+        data:{
+            a:"aaa",
+            c:"ttt"
+        },
+        components:{//注册组件
+            "aaa":{
+                data:function(){
+                    return{
+                        msg:"模板数据"
+                    }
+                },
+                template:"<h3>定义模板==>{{msg}}</h3><bbb></bbb>",//创建模板
+                components:{//注册子组件 aaa 组件里面的 
+                    
+                    "bbb":{
+                        data:function(){
+                            return {
+                                fan:"子组件数据"//bbb子组件里面的数据
+                            }
+                        },
+                        template:"<h1>我是子组件==>{{fan}}</h1>"
+                    }
+                }
+            },
+            "ttt":{
+                data:function(){
+                    return {
+                        ff:"组件ttt数据"
+                    }
+                },
+                template:"<div>组件ttt</div>",
+
+            }
+        }
+    })
+
+重点: Vue 默认情况下 父组件和子组件数据不能 共享  "子组件获取不到父组件数据"
+
+
+那么 如何拿到子组件的数据？
+组件之间的数据传递:子组件 获取父组件的data数据
+
+子组件获取父组件的data
+	再调用子组件
+	<bbb :m="msg" :r="sgm"></bbb>
+子组件之内：
+	props:{
+		"m":String,
+		"t":Number
+	}
+
+
+props:{
+	"mm":
+}
+
+续：
+
+<body>
+<div id="box">
+    <parent></parent>
+
+</div>
+<template id="fax">
+    <h1>{{msg}}</h1>
+    <children :m="msg" :r="mgs">//绑定数据
+	（:m="msg"）//绑定数据
+    </children>
+</template>
+   <script type="text/javascript">
+   new Vue({
+       el:"#box",
+       data:{
+           a:"one"
+       },
+       components:{//注册组件
+            "parent":{//父组件
+                data:function(){//父组件数据
+                    return{
+                        msg:"parent数据",
+                        mgs:"parent数据2"//字符串
+                    }
+                },
+                template:"#fax",
+                components:{//注册子组件
+                    "children":{
+                        data:function(){
+                            return{
+                                datat:"子节点数据"
+                            }
+                        },
+                        props:{
+                            m:String,
+                            r:String//只支持 字符串
+			    t:Number//只支持数字
+                        },
+                        template:"<h2>子节点 ->{{datat}} {{m}} -> {{r}}</h2>"
+                    }
+                }
+            }
+       }
+   })
+   </script>
+</body>
+------------------------
+
+父组件 获取子组件的数据 相当于 子组件 发送数据给父组件
+
+this.$emit("child-msg",this.a)
+$emit("事件名称",数据名称) 自定义事件  
+
+父组件获取子组件数据
+
+子	$emit("事件","msg") 
+
+<body>
+<div id="box">
+    <parent></parent>
+    
+</div>
+
+<template id="t">
+    <input type="button" value="按钮" />
+    <h1>我是父级 ->{{msg}}</h1>
+    <children @child-msg="get"></children>	//@child-msg="get" 接收 $emit 发送过来的数据 get方法 不能加括号 否则找不到这个数据	
+</template>
+<template id="zizujian">
+    <h5>子组件-{{data1}}</h5>
+    <input type="button" value="end" @click="send()" />
+</template>
+   <script type="text/javascript">
+   new Vue({
+        el:"#box",
+        data:{
+
+        },
+        components:{
+            "parent":{
+                data:function(){
+                    return {
+                        msg:"父组件数据",
+                        as:"boxs"
+                    }
+                },
+                
+                template:"#t",
+                methods:{
+                    get:function(msg){	//msg 是$emit 发送过来的 this.a 数据
+                        this.msg=msg;
+                    }
+                },
+                components:{
+                    "children":{
+                        data:function(){
+                            return {
+                                a:"child数据"
+                            }
+                        },
+
+                        methods:{
+                            send:function(){
+                                console.log(this.a)
+                                this.$emit("child-msg",this.a)
+                            }
+                        },
+                        template:"#zizujian"
+                        //template:"<h3>子组件->{{data1}} {{m}}</h3>"
+                    }
+                }
+            }
+        }
+   })
+   </script>
+</body>
+</html>
+---------------------------------
+
+
+<body>
+<div id="box">
+    <parent>
+        <ul slot="ul-slot">// 指定占位名称
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+        </ul>
+        <ol slot="ol-slot">
+            <li>olololol</li>
+            <li>olololol</li>
+            <li>olololol</li>
+            <li>olololol</li>
+        </ol>
+    </parent>
+    <hr>
+    <parent>
+    </parent>
+    
+</div>
+
+<template id="t">
+    <input type="button" value="按钮" />
+    <h1>我是父级 ->{{msg}}</h1>
+    <slot name="ol-slot">默认情况</slot>//slot 占位
+    <slot name="ul-slot">默认情况2</slot>
+    <children @child-msg="get"></children> 
+</template>
+<template id="zizujian">
+    <h5>子组件-{{data1}}</h5>
+    <input type="button" value="end" @click="send()" />
+</template>
+   <script type="text/javascript">
+   new Vue({
+        el:"#box",
+        data:{
+
+        },
+        components:{
+            "parent":{
+                data:function(){
+                    return {
+                        msg:"父组件数据",
+                        as:"boxs"
+                    }
+                },
+                
+                template:"#t",
+                methods:{
+                    get:function(msg){
+                        this.msg=msg;
+                    }
+                },
+                components:{
+                    "children":{
+                        data:function(){
+                            return {
+                                a:"child数据"
+                            }
+                        },
+
+                        methods:{
+                            send:function(){
+                                console.log(this.a)
+                                this.$emit("child-msg",this.a)
+                            }
+                        },
+                        template:"#zizujian"
+                        //template:"<h3>子组件->{{data1}} {{m}}</h3>"
+                    }
+                }
+            }
+        }
+   })
+   </script>
+</body>
+
+
+
+
+---------------------------------
+vue2.0 报废了
+vm.$dispatch(事件名,数据) 子组件向父组件 发送数据
+vm.$broadcast(事件名,数据) 父组件向子组件传播数据
+需要配合event
+
+
+/////////////////////////////////////
+
+	Vue Router//
+bower info vue-router 查看 router 版本
+
+
+
+
+
+
+
+
