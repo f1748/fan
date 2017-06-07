@@ -1,0 +1,100 @@
+适配：
+rem 适配：
+em:根据自身的字体大小来计算自己的尺寸
+rem： 根据根节点(html)来计算自身的尺寸
+html.getBoundingClinetRect();对象
+
+
+//750px 
+
+像素比
+alert(window.devicePixelRatio) 2个像素 显示 1个像素的东西
+
+行间块级元素 + 
+white-space:nowrap;  = 强制不换行
+box-sizing:border-box;
+text-overflow:ellipsis; 超出部分 省略号显示
+offsetLeft 元素距离左边的距离
+ 
+ touchstart 手指放在屏幕上促发
+ touchmove 手指放在屏幕上滑动连续促发
+ touchend   手指从屏幕上离开促发
+ touchcancel 系统停止跟踪触摸时触发
+ Math.round()   四舍五入 取整
+
+ e.changedTouches[0] 第一个手指
+
+ 轮播图思路：
+ 1.touchstart 记录手指按下位置坐标
+    startPoint = e.changedTouches[0].pageX
+ 2.
+ 横向拖动判断：
+ 	pageX>pageY  横向拖动
+ 	pageY> pageX 纵向拖动
+
+
+
+ transform 笔记
+ 1.translateX   translateY 位移 单位px
+
+ 2.rotate   旋转  单位  deg
+
+ 3.skewX    skewY 倾斜 单位 deg
+
+ 4.scale scaleX scaleY 缩放 单位 0.5
+
+------------------
+ transition 动画
+
+ transition-property 动画样式
+
+ transition-duration 动画时间
+
+ transition-delay   动画延迟
+
+ transition-timing-function     动画形式
+ ease 由慢到快
+ ease-in 加速
+ ease-out 减速
+ linear 匀速
+
+ 例子
+ transition:5s width linear
+
+
+
+
+=========移动适配==========
+
+元素适配：
+1.rem 根据 根节点字体大写 最小值为12 计算尺寸
+如:
+	html font-size:20px;
+	
+节点 的 1rem 值为为20 
+
+节点的 rem值计算px 为 Xrem*font-size = 最终px值
+
+通常移动适配 使用 动态设置html字体 适配元素尺寸大小
+html.getBoundingClientRect().width;获取html大小
+html.style.fontSize = width / 16 + "px";
+
+横竖屏切换：
+window.orientationchange() 手机端横竖屏触发事件
+横竖屏值：window.orientation = 0; 竖屏
+		window.orientation = 90; 横屏
+		window.orientation = -90; 倒横屏
+window.resize() 	电脑横竖屏 触发事件
+
+
+
+
+
+
+
+
+
+
+
+============pc适配===========
+宽度固定死 页面大小居中
