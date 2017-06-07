@@ -1,0 +1,715 @@
+<!doctype html>
+<html>
+    <head>
+    	<meta charset="utf-8" />
+        <title>移动端事件</title>
+        <meta name="viewport" content="width=device-width,user-scalable=no" />
+<link type="text/css" rel="stylesheet" href="./css/less.css" />
+<script src="./js/tranform.js"></script>
+<style>
+
+    body{
+        margin:0;
+
+    }
+    #box{
+        width:10rem;
+        height:10rem;
+        background: red;
+    }
+</style>
+<script>
+    /*
+
+    */
+    
+  document.addEventListener("touchstart",function(e){
+  e.preventDefault();//阻止默认事件
+  })
+
+	setRem();
+    window.addEventListener("orientationchange",setRem);
+    window.addEventListener("resize",setRem);
+    function setRem(){
+        var html = document.querySelector('html');
+        var width = html.getBoundingClientRect().width;
+     //   console.log(html)
+       // alert(width);
+        html.style.fontSize = width /16 +"px";
+    }
+
+  
+  //  alert(window.devicePixelRatio);//像素比为2
+/*(function(){
+        var html = document.querySelector("html");
+        var width = html.getBoundingClientRect().width;
+        console.log(html.getBoundingClientRect())
+        html.style.fontSize = width / 16 + "px";
+    })()
+    */
+
+    
+</script>  
+</head>
+<body>
+ <section id="wrap">
+     <header id="header">
+         <div class="headerC">
+             <h1 class="logo">
+                 <a href="#"><img src="./img/logo.png" /></a>
+             </h1>
+              <a href="javascript:;" id="menuBtn" class="menuBtnClos"></a>
+              <nav id="btns">
+                  <a href="#" class="searchBtn">搜索</a>
+                  <a href="#">注册</a>
+                  <a href="#">登陆</a>
+              </nav>
+         </div>
+        <form class="search">
+            <input type="text" placeholder="请输入内容……" />
+            <input type="submit" value="搜索" />
+        </form>
+         <ul class="nav">
+             <li>
+                 <a href="#">首页</a>
+             </li>
+             <li>
+                 <a href="#">MV</a>
+             </li>
+             <li>
+                 <a href="#">悦单</a>
+             </li>
+             <li>
+                 <a href="#">V榜</a>
+             </li>
+             <li>
+                 <a href="#">众筹</a>
+             </li>
+             <li>
+                 <a href="#">饭团</a>
+             </li>
+             <li>
+                 <a href="#">节目</a>
+             </li>
+             <li>
+                 <a href="#">音乐</a>
+             </li>
+             <li>
+                 <a href="#">APP下载</a>
+             </li>
+             <li>
+                 <a href="#">资讯</a>
+             </li>
+             <li>
+                 <a href="#">我的家</a>
+             </li>
+             <li>
+                 <a href="#">热门应用</a>
+             </li>
+             
+         </ul>
+     </header>
+     <div class="content">
+        <nav id="navScroll">
+            <ul id="navs">
+	             <li class="active">
+	                 <a href="#" >节目</a>
+	             </li>
+	             <li>
+	                 <a href="#">音乐</a>
+	             </li>
+	             <li>
+	                 <a href="#">APP下载</a>
+	             </li>
+	             <li>
+	                 <a href="#">资讯</a>
+	             </li>
+	             <li>
+	                 <a href="#">我的家</a>
+	             </li>
+	             <li>
+	                 <a href="#">热门应用</a>
+	             </li>
+	               <li>
+	                 <a href="#">APP下载</a>
+	             </li>
+	             <li>
+	                 <a href="#">资讯</a>
+	             </li>
+	             <li>
+	                 <a href="#">我的家</a>
+	             </li>
+	             <li>
+	                 <a href="#">热门应用</a>
+	             </li>
+	               <li>
+	                 <a href="#">APP下载</a>
+	             </li>
+	             <li>
+	                 <a href="#">资讯</a>
+	             </li>
+	             <li>
+	                 <a href="#">我的家</a>
+	             </li>
+	             <li>
+	                 <a href="#">热门应用</a>
+	             </li>
+	             <li>
+                 <a href="#">热门应用qqqqqqqqqqq</a>
+             </li>
+            </ul>
+        </nav>
+        <div id="wrapp">
+    	<ul id="liste">
+        <li>
+            <a href="#">
+                <img src="./img/1.jpg" />
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./img/2.jpg" />
+            </a>
+        </li>  
+        <li>
+            <a href="#">
+                <img src="./img/3.jpg" />
+            </a>
+        </li>  
+        <li>
+            <a href="#">
+                <img src="./img/4.jpg" />
+            </a>
+        </li>  
+        <li>
+            <a href="#">
+                <img src="./img/5.jpg" />
+            </a>
+        </li>   
+    </ul>    
+    <nav id="navSi">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </nav>
+    
+    
+</div> 
+		<section class="tab">
+		<header class="tabHeader">
+			<h2 href="#">MV首播</h2>
+			<a href="#">更多></a>
+		</header>
+		<nav class="tabNav">
+			<a href="#">全部</a>
+			<a href="#">内地</a>
+			<a href="#">港台</a>
+			<a href="#">欧美</a>
+			<a href="#">韩国</a>
+			<a href="#">日本</a>
+			
+			<span></span>
+		</nav>
+		<section class="tabList">
+			<ul class="tabNext">lodding</ul>
+			<ul class="tabShow">
+				<li>
+					<img src="./img/tab.jpg" />
+					<span>望 电视剧《楚乔传》片头曲</span>
+				</li>
+				<li>
+					<img src="./img/tab.jpg" />
+					<span>望 电视剧《楚乔传》片头曲</span>
+				</li>
+				<li>
+					<img src="./img/tab.jpg" />
+					<span>望 电视剧《楚乔传》片头曲</span>
+				</li>
+				<li>
+					<img src="./img/tab.jpg" />
+					<span>望 电视剧《楚乔传》片头曲</span>
+				</li>
+				<li>
+					<img src="./img/tab.jpg" />
+					<span>望 电视剧《楚乔传》片头曲</span>
+				</li>
+				<li>
+					<img src="./img/tab.jpg" />
+					<span>望 电视剧《楚乔传》片头曲</span>
+				</li>
+				
+			</ul>
+			<ul class="tabNext">lodding</ul>
+		</section>
+		
+	</section>
+	<section class="modtow">
+			<header class="headerF">
+				<h3>粉丝聚焦</h3>
+			</header>
+			<ul>
+				<li>
+					<a href="javascript::">
+						<img src="./img/face.jpg" />
+						<span>I.O.I 出道一周年纪念 饭制版</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript::">
+						<img src="./img/face1.jpg" />
+						<span>I.O.I 出道一周年纪念 饭制版</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript::">
+						<img src="./img/face2.jpg" />
+						<span>I.O.I 出道一周年纪念 饭制版</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript::">
+						<img src="./img/face3.jpg" />
+						<span>I.O.I 出道一周年纪念 饭制版</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript::">
+						<img src="./img/face4.jpg" />
+						<span>I.O.I 出道一周年纪念 饭制版</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript::">
+						<img src="./img/face5.jpg" />
+						<span>I.O.I 出道一周年纪念 饭制版</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+		<div class="liuxing">
+			<header class="liu">
+				<h3>正在流行</h3>
+				<a href="javascript:;">更多></a>
+				
+			</header>
+			<div class="lt">
+					<a href="#">全部</a>
+					<a href="#">影视</a>
+					<a href="#">内地</a>
+					<a href="#">港台</a>
+					<a href="#">欧美</a>
+					<a href="#">韩国</a>
+					<a href="#">日本</a>
+					<p></p>
+				</div>
+				
+			<ul>
+				<li>
+					<div class="showtv">
+						<img  src="./img/lx1.jpg"/>
+						<a href="#">《变形金刚5》曝“正邪难辨”版预告 擎天柱被洗脑大杀四方  </a>
+					</div>
+					<div>
+							<p>
+								<i class="bj1"></i>
+								<span>4.7万</span>
+							</p>
+							<p>
+								<i class="bj2"></i>
+								<span>2</span>
+							</p>
+					</div>
+					
+				</li>
+				<li>
+					
+						<div class="showtv">
+							<img  src="./img/lx3.jpg"/>
+							<a href="#">《变形金刚5》曝“正邪难辨”版预告 擎天柱被洗脑大杀四方  </a>
+						</div>
+						
+						<div>
+							<p>
+								<i class="bj1"></i>
+								<span>4.7万</span>
+							</p>
+							<p>
+								<i class="bj2"></i>
+								<span>2</span>
+							</p>
+						</div>
+					
+				</li>
+				<li>
+					
+						<div class="showtv">
+							<img  src="./img/lx3.jpg"/>
+							<a href="#">《变形金刚5》曝“正邪难辨”版预告 擎天柱被洗脑大杀四方  </a>
+						</div>
+						
+						<div>
+							<p>
+								<i class="bj1"></i>
+								<span>4.7万</span>
+							</p>
+							<p>
+								<i class="bj2"></i>
+								<span>2</span>
+							</p>
+						</div>
+					
+				</li>
+				<li>
+					
+						<div class="showtv">
+							<img  src="./img/lx4.jpg"/>
+							<a href="#">《变形金刚5》曝“正邪难辨”版预告 擎天柱被洗脑大杀四方  </a>
+						</div>
+						
+						<div>
+							<p>
+								<i class="bj1"></i>
+								<span>4.7万</span>
+							</p>
+							<p>
+								<i class="bj"></i>
+								<span>2</span>
+							</p>
+						</div>
+					
+				</li>
+				<li>
+					
+						<div class="showtv">
+							<img  src="./img/lx1.jpg"/>
+							<a href="#">《变形金刚5》曝“正邪难辨”版预告 擎天柱被洗脑大杀四方  </a>
+						</div>
+						
+						<div>
+							<p>
+								<i class="bj1"></i>
+								<span>4.7万</span>
+							</p>
+							<p>
+								<i class="bj2"></i>
+								<span>2</span>
+							</p>
+						</div>
+					
+				</li>
+				<li>
+					
+						<div class="showtv">
+							<img  src="./img/lx1.jpg"/>
+							<a href="#">《变形金刚5》曝“正邪难辨”版预告 擎天柱被洗脑大杀四方  </a>
+						</div>
+						
+						<div>
+							<p>
+								<i class="bj1"></i>
+								<span>4.7万</span>
+							</p>
+							<p>
+								<i class="bj2"></i>
+								<span>2</span>
+							</p>
+						</div>
+					
+				</li>
+			</ul>
+		</div>
+		<div class="rm">
+			<div>
+				<a href="#">热门应用</a>
+			</div>
+			<div>
+				<a href="#">更多></a>
+			</div>
+		</div>
+		<div class="footer">	
+    		Copyright © 2016 yinyuetai.com
+		</div>
+     </div>
+     
+ </section>
+ <script>
+ 	
+     navShow();
+    
+     setTimeout(scrollPic,30)
+    
+    tbs();
+	tab();
+	function tab(){
+		var tabNav = document.querySelectorAll('.tabNav');
+		
+		var tabList = document.querySelectorAll(".tabList");
+		var left = tabNav[0].offsetWidth;
+	//	console.log(left)
+		
+		for(var i = 0;i<tabNav.length;i++){
+			tabfunc(tabNav[i],tabList[i]);
+		}
+		
+		function tabfunc(nav,list){
+			var startX = 0;
+			var startEle = 0; 
+			var moveX = 0;
+			var isFirst = true;
+			var isMove = true;
+			var isLoad = false;
+			var next = document.querySelectorAll('.tabNext');
+			csstransform(list,'translateX',-left);
+			
+			list.addEventListener('touchstart',function(e){
+			
+				list.style.transition = "none";
+				startX = e.changedTouches[0];
+				startEle = csstransform(list,'translateX');
+				isMove = true;
+				isFirst = true;
+			});
+			
+			list.addEventListener('touchmove',function(e){
+				
+				
+				if(!isMove){
+					return;
+				}
+				var moveX = e.changedTouches[0];
+				var disX = moveX.pageX-startX.pageX;
+				var disY = moveX.pageY - startX.pageY;
+				
+				console.log(next)
+			//	console.log(disY)
+				var width = disX + startEle;
+		//		console.log(disX)
+		//		console.log(width);
+				if(isFirst){
+					isFirst = false;
+					if(Math.abs(disY)>Math.abs(disX)){
+					//	console.log(disX)
+						isMove = false;
+					}
+				}
+				if(isMove){
+					csstransform(list,'translateX',width);
+					
+				}
+				
+				if(Math.abs(disX) > left/2){
+				//	console.log(disX)
+					end(disX);
+				}
+			
+				
+			})
+		
+			
+			function end(disX){
+			
+				var dir = disX/Math.abs(disX);//disX 为1 又边 为 -1 左边 
+				//console.log(dir,disX,Math.abs(disX));
+				var target = dir > 0 ? 0 :-2*left;
+				list.style.transition = '300ms';
+				console.log(target)
+				csstransform(list,'translateX',target);
+				
+				list.addEventListener('transitionend',tranEend);
+				
+			}
+			function tranEend(){
+			
+				list.removeEventListener('transitionend',tranEend);
+				
+					for(var i = 0;i<next.length;i++){
+						next[i].style.opacity = 1;
+					}
+				setTimeout(function(){
+				
+					list.style.transition = 'none';
+					
+					csstransform(list,"translateX",-left);
+					isLoad = false;
+				},1000);
+			}
+			
+			
+			
+			
+		}
+		
+	}
+     function tbs(){
+     	
+     	var navScroll = document.querySelector("#navScroll");
+     	var navs = document.querySelector('#navs');
+     	//console.log(navs)
+     	var newPinter = 0;var nowPinter = 0;var navx = 0;
+     	var minX = navScroll.clientWidth-navs.offsetWidth;
+     	var over = 0;var step = 0;
+     	csstransform(navs,'translateX',0);
+     	navScroll.addEventListener('touchstart',function(e){
+     		newPinter = e.changedTouches[0].pageX;
+     		 //navx = csstransform(navs,'translateX');
+     		 
+     		 navx = csstransform(navs,'translateX');
+     		 //navx = navs.offsetLeft;
+     		
+     	
+     	});
+     	//console.log(navx);
+     	navScroll.addEventListener("touchmove",function(e){
+     		nowPinter = e.changedTouches[0].pageX;
+     		//console.log(navx)
+     		var dis = nowPinter - newPinter;
+     		var left = dis+navx;
+			if(left>0){
+				step = 1-left / navScroll.clientWidth;
+
+				left = parseInt(left*step);
+				
+			}
+			if(left<minX){
+				var over = minX - left;//
+				console.log(minX)
+				step = 1-over / navScroll.clientWidth;
+				over = parseInt(over*step);
+				left = minX-over;
+				//console.log(left,over)
+			}
+     		csstransform(navs,'translateX',left)
+     	});
+     
+     };
+    function navShow(){
+        var btn = document.querySelector("#menuBtn");
+        var nav = document.querySelector(".nav");
+        btn.addEventListener("touchstart",function(e){
+            if(btn.className == "menuBtnClos"){
+                btn.className = 'menuBtnShow';
+                nav.style.display = 'block';
+            }else{
+                btn.className = "menuBtnClos";
+                nav.style.display = 'none';
+            }
+            e.stopPropagation();
+        });
+        nav.addEventListener('touchstart',function(e){
+        	e.stopPropagation();
+        })
+        document.addEventListener("touchstart",function(){
+        	if(btn.className == "menuBtnShow"){
+        		btn.className = "menuBtnClos";
+                nav.style.display = 'none';
+        	}
+        });
+    };
+   
+   
+    function scrollPic(){
+//  	document.addEventListener("touchstart",function(e){
+//	    	e.preventDefault();//阻止默认事件
+//	    })
+      	var wrap = document.querySelector("#wrapp");
+      	var list = document.querySelector("#liste");
+      	list.innerHTML += list.innerHTML;
+      	var lis = document.querySelectorAll("#liste li");
+	     // var css = document.querySelector("#css");
+	      var css = document.createElement("style");
+	      var nav = document.querySelectorAll("#navSi span");
+	   		var timer = 0;var now = 0;
+	   		
+	      var style = "#wrapp{height:"+lis[0].offsetHeight+"px}"
+	      style +="#liste{width:"+lis.length+"00%}";//parent Height 500%
+	      style +="#liste li{width:"+(1/lis.length*100)+"%}";//li Height
+	      
+	      css.innerHTML += style;
+		document.head.appendChild(css);
+	      var startPoint = 0;
+	      var startX = 0;
+	      csstransform(list,'translateX',0)
+	      auto();
+	      wrap.addEventListener('touchstart',function(e){
+	      	clearInterval(timer);
+	      	list.style.transition = "none";
+	      	var translateX = csstransform(list,'translateX');
+	      	//console.log(list.offsetWidth);
+	      	now = Math.round(-translateX/wrap.offsetWidth);
+	      	
+	      	console.log(now);
+	      	if(now == 0){
+	      		now = nav.length;
+	      	}
+	      	if(now == lis.length-1){
+	      		now = nav.length-1;
+	      	}
+	      //	console.log(lis.length)
+	      	csstransform(list,'translateX',-now*wrap.offsetWidth);
+	        startPoint = e.changedTouches[0].pageX;//手指初始坐标
+	        //startX = list.offsetLeft;
+	        startX = csstransform(list,'translateX');
+	       // console.log(startX)
+	        
+	      });
+	      wrap.addEventListener('touchmove',function(e){
+	          var nowPoint = e.changedTouches[0].pageX;
+	          var dis = nowPoint - startPoint;
+	          csstransform(list,"translateX",startX+dis)
+	       /*   var left = startX+dis;
+	          list.style.left = left+'px';*/
+	      });
+	      wrap.addEventListener("touchend",function(e){
+	
+	          var translateX = csstransform(list,'translateX');
+	       
+	          now = Math.round(-translateX / wrap.offsetWidth);
+	
+	       //  console.log(-now*wrap.offsetWidth)
+	          list.style.transition = '.7s';
+	         csstransform(list,'translateX',-now*wrap.offsetWidth);
+	    
+	          for(var i=0;i<nav.length;i++){
+              		nav[i].className = "";
+              
+         		}
+          		nav[now%nav.length].className = 'active';
+        		//auto();
+	      });
+	      function auto(){
+	      	clearInterval(timer);
+	      	timer = setInterval(
+	      		function(){
+	      			
+	      			if(now == lis.length-1){
+	      				now = nav.length-1;
+	      			}
+	      			list.style.transition = 'none';
+	      			csstransform(list,'translateX',-now*wrap.offsetWidth);
+	      			setTimeout(function(){
+	      				now++
+	      				tab();
+	      			},30)
+	      			
+	      		},1000);
+	      };
+	      
+	      function tab(){
+	      	list.style.transition = '.5s';
+      			csstransform(list,'translateX',-now*wrap.offsetWidth);
+      			for(var i=0;i<nav.length;i++){
+              		nav[i].className = "";
+              
+         		}
+          		nav[now%nav.length].className = 'active';
+	      }
+	      
+    
+    }
+ </script>
+</body>
+ 
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<title>移动适配</title>
+		<style>
+		.box{
+			position:relative;
+			
+			display: inline-block;
+			width:100px;
+			height:100px;
+			background: red;
+		}
+		.box1{
+			width:100%;
+			height:50%;
+			background: yellow;
+		}
+		</style>
+		<script>
+//			setRem()
+//		//	window.addEventListener('orientationchange',setRem);
+//			window.addEventListener('resize',setRem)
+//			function setRem(){
+//				var html = document.querySelector("html");
+//				var width = html.getBoundingClientRect().width;
+//				html.style.fontSize = width / 16 + "px";
+//				alert(width)
+//			}
+		
+			/*(function(){
+				console.log(window.orientation)
+				var html = document.querySelector('html');
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 16 +'px';
+			})()*/
+		</script>
+	</head>
+	<body>
+		
+			<div class="box"></div>
+		
+	</body>
+	<script>
+		var box = document.querySelector('.box');
+		console.log(box)
+		box.style.left = 100+'px';
+		tab();
+		function tab(){
+			var box = document.querySelectorAll('.box');
+			var startX = 0; 
+			var startEle = 0; 
+			var moveX = 0;
+			for(var i = 0;i<box.length;i++){
+				fn(box[i]);
+			}
+			function fn(box){
+				 box.addEventListener('touchstart',function(e){
+				startX = e.changedTouches[0].pageX;
+				startEle = box.offsetLeft;
+				console.log(startEle)
+				});
+				
+				box.addEventListener('touchmove',function(e){
+					moveX = e.changedTouches[0].pageX;
+					console.log(moveX)
+					var dis = moveX - startX;
+					var left = dis + startEle;
+					box.style.left = left + 'px';
+					console.log(box.style.left)
+				});
+				box.addEventListener('touchend',function(e){
+					
+				})
+			}
+			
+		}
+		
+	</script>
+</html>
